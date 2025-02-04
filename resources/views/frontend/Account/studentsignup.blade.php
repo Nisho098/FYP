@@ -58,8 +58,18 @@
 </div>
 <div class="form-group">
   <label for="email">Email address</label>
-  <input type="email" name="email" id="email" placeholder="Enter your email" value="{{ old('email') }}" >
+  <input 
+    type="email" 
+    name="email" 
+    id="email" 
+    placeholder="Enter your email" 
+    value="{{ old('email') }}" 
+    required 
+    pattern="[a-zA-Z0-9._%+-]+@edu\.np" 
+    title="Your email must be a valid @edu.np email address."
+  >
 </div>
+
 <div class="form-group">
   <label for="password">Password</label>
   <input type="password" name="password" id="password" placeholder="Enter your password" >

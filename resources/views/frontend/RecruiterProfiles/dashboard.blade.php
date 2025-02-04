@@ -11,7 +11,9 @@
     <!-- Iconscout CSS -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
-    <title>recruiter Dashboard</title>
+
+
+    <title>Recruiter Dashboard</title>
 </head>
 <body>
     <div class="container">
@@ -23,42 +25,61 @@
 
             <ul class="nav-links">
                 <li><a href="{{ route('dashboard') }}" class="nav-item"><span>Dashboard</span></a></li>
-                <li><a href="#" class="nav-item"><span>Application</span></a></li>
-                <li><a href="#" class="nav-item"><span>Chats</span></a></li>
                 <li>
-                <a href="{{ route('postinternships.tablecreate') }}" class="nav-item">
-
-        <span>All Internships</span>
-        </a>
-        </li>
-                <li>
-                <a href="{{ route('postinternships.create') }}" class="nav-item">
-            <span>Post Internships</span>
+                <a href="{{ route('recruiter.showApplications', ['jobId' => $job->id ?? null]) }}" class="nav-item">
+    <span>Candidates</span>
 </a>
-</li>
+
+
+
+
+
+
+
+                <li><a href="#" class="nav-item"><span>Chats</span></a></li>
+                <li><a href="{{ route('postinternships.tablecreate') }}" class="nav-item"><span>All Internships</span></a></li>
+                <li><a href="{{ route('postinternships.create') }}" class="nav-item"><span>Post Internships</span></a></li>
             </ul>
+
+            <!-- Logout Button -->
+            <div class="logout">
+                <a href="{{ route('home') }}"><i class="uil uil-signout"></i>Logout</a>
+            </div>
         </nav>
-       
 
+        
+      
 
-       
 
         <!-- Main Content -->
-        <div class="main-content">
-        @yield('content')
+       
+        <div class="header">
+    <div class="dropdown">
+        <button class="dropdown-btn">
+        <i class="uil uil-user-circle"></i> 
+            <span>{{ Auth::user()->name }}</span> 
+            <i class="uil uil-angle-down"></i>
+        </button>
+        <div class="dropdown-menu">
+            <a href="{{ route('recruiterProfile.create') }}">My Profile</a>
+            <a href="#">Settings</a>
+        </div>
+    </div>
 </div>
+<div class="main-content">
+@if (session('success'))
+    <div class="alert alert-success">
+        <p>{{ session('success') }}</p>
+    </div>
+@endif
+    </div>
 
-    <!-- <ul class="logout-mode">
-                <li><a href="#">
-                    <i class="uil uil-signout"></i>
-                    <span class="link-name">Logout</span>
-                </a></li>
-        </ul>
-</div> -->
+    
+   
 
+    
 
-
-    <!-- Scripts -->
     <script src="{{ asset('js/studentdashboard.js') }}"></script>
+    <script src="{{ asset('js/custom-buttons.js') }}"></script>
 </body>
 </html>

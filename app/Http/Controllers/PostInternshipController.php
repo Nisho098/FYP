@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\support\facades\Auth;
+use App\Models\Recruiter_profiles;
 
 use Illuminate\Http\Request;
 use App\Models\Job;
@@ -11,9 +12,20 @@ class PostInternshipController extends Controller
 {
     public function index()
     {
-        $internships = Job::all();
-        return view('frontend.RecruiterProfiles.internshiptable', compact('internships'));
+        // Get the recruiter profile for the authenticated user
+        $recruiterProfile = Recruiter_profiles::where('user_id', auth()->user()->id)->first();
+    
+        if (!$recruiterProfile) {
+            return redirect()->back()->with('error', 'Recruiter profile does not exist.');
+        }
+    
+        // Get only the jobs associated with the logged-in recruiter
+        $jobs = Job::where('recruiter_id', $recruiterProfile->id)->get();
+    
+        return view('frontend.RecruiterProfiles.internshiptable', compact('jobs'));
     }
+    
+    
 
     public function tablecreate()
 {
@@ -46,6 +58,7 @@ public function create()
  * @param  \Illuminate\Http\Request  $request
  * @return \Illuminate\Http\Response
  */
+// In your store method
 public function store(Request $request)
 {
     // Validate the incoming data
@@ -59,27 +72,35 @@ public function store(Request $request)
         'application_deadline' => 'required|nullable|date|after_or_equal:today',
     ]);
 
+    // Get the recruiter profile associated with the authenticated user
+    $recruiterProfile = Recruiter_profiles::where('user_id', auth()->user()->id)->first();
+
+    if (!$recruiterProfile) {
+        return redirect()->back()->with('error', 'Recruiter profile does not exist. Please complete your profile first.');
+    }
+
     // Create a new Job entry
-    $jobs = new Job;
+    $job = new Job;
 
-    $jobs->title = $request->title;
-    $jobs->description = $request->description;
-    $jobs->location = $request->location;
-    $jobs->job_type = $request->job_type;
-    $jobs->industry = $request->industry;
-    $jobs->requirements = $request->requirements;
-    $jobs->application_deadline = $request->application_deadline;
-    $jobs->recruiter_id = auth()->user()->id; // Assign the recruiter (authenticated user) ID
-    
-    // Save the Job
-    $jobs->save();
+    // Set job details
+    $job->title = $request->title;
+    $job->description = $request->description;
+    $job->location = $request->location;
+    $job->job_type = $request->job_type;
+    $job->industry = $request->industry;
+    $job->requirements = $request->requirements;
+    $job->application_deadline = $request->application_deadline;
 
-    // Return a success message directly without redirect
+    // Set the correct recruiter_id based on the recruiter profile
+    $job->recruiter_id = $recruiterProfile->id; 
+
+    // Save the job
+    $job->save();
+
+    // Redirect with success message
     return redirect()->route('postinternships.tablecreate')->with('success', 'Internship posted successfully!');
-
-
-
 }
+
 
 
 
@@ -106,11 +127,18 @@ public function show($id)
  */
 public function edit($id)
 {
+    // Find the job
     $job = Job::findOrFail($id);
 
-    return view("frontend.RecruiterProfiles.internshipedit", ['job' => $job,]);
+    // Check if the logged-in user is the one who posted the job
+    // if ($job->recruiter_id !== auth()->user()->id) {
+    //     return redirect()->route('postinternships.tablecreate')->with('error', 'You are not authorized to edit this job.');
+    // }
 
+    // Proceed to edit the job
+    return view("frontend.RecruiterProfiles.internshipedit", ['job' => $job]);
 }
+
 
 /**
  * Update the specified resource in storage.

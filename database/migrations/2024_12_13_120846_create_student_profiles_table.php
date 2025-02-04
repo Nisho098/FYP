@@ -18,15 +18,19 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->unique(); // Foreign key to Users table, unique constraint
             $table->string('name', 100);
             $table->string('university_name', 255)->nullable();
-            $table->string('major', 100)->nullable();
+            $table->text('about', 255)->nullable();
+            
             $table->integer('graduation_year')->nullable();
-            $table->text('skills')->nullable(); 
+            $table->string('skills')->nullable(); 
+            $table->string('contact')->nullable(); // Add contact field
+            $table->string('location')->nullable(); 
             $table->string('resume_url', 255)->nullable();
             $table->string('portfolio_url', 255)->nullable();
             $table->timestamps(); 
 
             // Foreign key constraint
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+           
         });
     }
 

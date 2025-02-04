@@ -10,6 +10,7 @@
 
 
   <a href="{{ route('home') }}" class="back-btn">Back</a>
+ 
 
   <div class="container">
     <h1>Career <span class="highlight">Bridge</span></h1>

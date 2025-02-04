@@ -23,11 +23,17 @@
 
             <ul class="nav-links">
                 <li><a href="{{ route('dashboard') }}" class="nav-item"><i class="uil uil-tachometer-fast-alt"></i><span>Dashboard</span></a></li>
-                <li><a href="#" class="nav-item"><i class="uil uil-briefcase"></i><span>Jobs</span></a></li>
+                <li><a href="{{ route('StudentProfile.showStudentApplications') }}" class="nav-item"><i class="uil uil-briefcase"></i><span>Application</span></a></li>
+
                 <li><a href="#" class="nav-item"><i class="uil uil-comment-alt-dots"></i><span>Chats</span></a></li>
                 <li><a href="#" class="nav-item"><i class="uil uil-building"></i><span>Companies</span></a></li>
             </ul>
+            <!-- Logout Button -->
+     <div class="logout">
+                <a href="{{ route('home') }}"><i class="uil uil-signout"></i>Logout</a>
+            </div>
         </nav>
+        
 
         <!-- Main Content -->
         <div class="main-content">
@@ -38,7 +44,7 @@
                         <h2>{{ Auth::user()->name }}</h2>
                         <p><strong>Address:</strong> {{ Auth::user()->location ?? 'Not Provided' }}</p>
                         <p><strong>Email:</strong> {{ Auth::user()->email }}</p>
-                        <p><strong>Contact:</strong> {{ Auth::user()->contact_number ?? 'Not Provided' }}</p>
+                        <p><strong>Contact:</strong> {{ Auth::user()->number ?? 'Not Provided' }}</p>
                     </div>
                 </div>
             </div>
@@ -52,7 +58,7 @@
                             <th>Job Type</th>
                             <th>Location</th>
                             <th>Deadline</th>
-                            <th>Details</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,6 +71,21 @@
                             <td>{{ ucfirst($job->job_type) }}</td>
                             <td>{{ $job->location }}</td>
                             <td>{{ \Carbon\Carbon::parse($job->application_deadline)->format('F j, Y') }}</td>
+                            <td>
+                            <div class="action-container">
+    <button class="dropdown-btn">⋮</button>
+    <div class="dropdown-menu">
+        <div class="dropdown-item">
+            <span class="icon">👁️</span>
+            <a href="{{ route('job.create', $job->id) }}" class="btn btn-primary btn-sm">
+                                <span>View Details</span>
+                            </a>
+
+        </div>
+    </div>
+</div>
+                            </td>
+
                             
                         </tr>
                         @endforeach
@@ -74,7 +95,26 @@
         </div>
     </div>
 
+     
+
+    <div class="header">
+    <div class="dropdown">
+        <button class="dropdown-btn">
+        <i class="uil uil-user-circle"></i> 
+            <span>{{ Auth::user()->name }}</span> 
+            <i class="uil uil-angle-down"></i>
+        </button>
+        <div class="dropdown-menu">
+        <a href="{{ route('studentProfile.create') }}">My Profile</a>
+            <a href="#">Settings</a>
+        </div>
+    </div>
+</div>
+<div class="main-content">
+    </div>
+
     <!-- Scripts -->
     <script src="{{ asset('js/studentdashboard.js') }}"></script>
+   
 </body>
 </html>

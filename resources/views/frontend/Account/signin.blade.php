@@ -3,15 +3,26 @@
 <div class="login-container">
     <div class="login-box">
   
+  
         <h1>Welcome back!</h1>
         <p>Enter your credentials to access your account</p>
         <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-        <form action="{{ route('Account.signin') }}" method="POST">
         @if (session('success'))
-        <div>
-            <p>{{ session('success') }}</p>
-        </div>
-    @endif
+    <div class="alert alert-success">
+        <p>{{ session('success') }}</p>
+    </div>
+@endif
+@if (session('error'))
+    <div class="alert alert-danger">
+        <p>{{ session('error') }}</p>
+    </div>
+@endif
+
+<!-- The rest of your login form goes here -->
+
+        <form action="{{ route('Account.signin') }}" method="POST">
+      
+
 
             @csrf
             <div class="form-group">
@@ -23,7 +34,8 @@
                 <input type="password" id="password" name="password" placeholder="Enter your password" >
             </div>
             <div class="form-group">
-                <a href="#" class="forgot-password">Forgot password?</a>
+            <a href="{{ route('Account.forgetpassword') }}" class="forgot-password">Forgot password?</a>
+
             </div>
             
             <button type="submit" class="btn">Login</button>

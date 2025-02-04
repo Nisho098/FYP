@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Auth\Notifications\VerifyEmail;
 
 class User extends Authenticatable
 {
@@ -20,11 +21,16 @@ class User extends Authenticatable
     use HasFactory;
 
     protected $fillable = [
-       'name',
-    'email',
-    'password',
-    'role',
-    
+        'name',
+        'password',
+        'role',
+        'about',
+        'email',
+        'university_name',
+        'contact',
+        'location',
+        'cv_url',
+        // Add other fields if necessary
     ];
 
     /**
@@ -45,4 +51,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function studentProfile()
+    {
+        return $this->hasOne(Studentprofile::class, 'user_id',);
+    }
+    
+ 
+
+  
+
+
+
+    
+  
 }
+

@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('company_website', 255)->nullable();
             $table->string('contact_number', 15)->nullable();
+            $table->text('details', 255)->nullable();
+            $table->text('personaldetails', 255)->nullable();
+            $table->string('address')->nullable(); 
+            $table->text('aboutcompany', 255)->nullable();
             $table->timestamps(); 
 
             // Foreign key constraint

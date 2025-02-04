@@ -1,0 +1,114 @@
+/* Container for the recruiter dashboard */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styling */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Success message box */
+.alert {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Application card container */
+.application-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading inside the application card */
+.application-card h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Paragraphs inside the application card */
+.application-card p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+/* Strong labels inside application card */
+.application-card p strong {
+    font-weight: bold;
+}
+
+/* Skills list */
+.application-card p span {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px;
+    background-color: #f1f1f1;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+/* Resume download link */
+.application-card div a {
+    color: #3b9c58;
+    text-decoration: none;
+}
+
+.application-card div a:hover {
+    text-decoration: underline;
+}
+
+/* Action buttons container */
+.application-actions {
+    margin-top: 20px;
+}
+
+/* Action buttons */
+.application-actions form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.application-actions button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Reject button style */
+.application-actions .btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.application-actions .btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Schedule Interview button style */
+.application-actions .btn-primary {
+    background-color: #3b9c58;
+    color: white;
+}
+
+.application-actions .btn-primary:hover {
+    background-color: #3b9c58;
+}
