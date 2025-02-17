@@ -1,5 +1,7 @@
 
+@extends('frontend.StudentProfiles.dashboard') <!-- Extend from dashboard layout -->
 
+@section('content')
     <div class="container">
         <h1>My Job Applications</h1>
         @if(session('success'))
@@ -46,5 +48,6 @@
             </table>
         @endif
     </div>
+    @endsection
 
 

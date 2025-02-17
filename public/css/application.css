@@ -1,15 +1,17 @@
 /* Container for the recruiter dashboard */
 .container {
-    width: 80%;
+    width: 90%;
+   
     margin: 0 auto;
     padding: 20px;
 }
 
 /* Header styling */
 h1 {
-    text-align: center;
+    text-align: left;
     font-size: 2rem;
-    margin-bottom: 20px;
+    color: #155724;
+    margin-bottom: 15px;
 }
 
 /* Success message box */
@@ -27,73 +29,67 @@ h1 {
 
 /* Application card container */
 .application-card {
-    background-color: #f9f9f9;
-    padding: 20px;
+    background-color: #e5e4e4;
+    padding: 15px; /* Reduced padding */
     border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
+    border-radius: 8px; /* Slightly smaller */
+    margin-bottom: 8px; /* Reduced margin between cards */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    width: 100%;
+    max-width: 750px; /* Slightly reduced width */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Heading inside the application card */
+/* Headings & Paragraphs */
 .application-card h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 1.3rem; /* Smaller heading */
+    margin-bottom: 5px; /* Less space below */
 }
 
-/* Paragraphs inside the application card */
 .application-card p {
-    font-size: 1rem;
-    margin-bottom: 8px;
+    font-size: 0.95rem; /* Slightly smaller text */
+    margin-bottom: 5px; /* Less space between lines */
 }
 
-/* Strong labels inside application card */
-.application-card p strong {
+/* Footer section for Job & Resume */
+.application-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 10px; /* Reduced space */
+    font-size: 0.95rem; /* Smaller text */
+}
+
+/* Resume link */
+.resume-link {
+    color: #007bff;
+    text-decoration: none;
     font-weight: bold;
 }
 
-/* Skills list */
-.application-card p span {
-    display: inline-block;
-    margin-top: 5px;
-    padding: 5px;
-    background-color: #f1f1f1;
-    margin-right: 5px;
-    border-radius: 3px;
-}
-
-/* Resume download link */
-.application-card div a {
-    color: #3b9c58;
-    text-decoration: none;
-}
-
-.application-card div a:hover {
+.resume-link:hover {
     text-decoration: underline;
 }
 
-/* Action buttons container */
+/* Action Buttons (Reduced Space) */
 .application-actions {
-    margin-top: 20px;
+    display: flex;
+    gap: 5px; /* Less gap between buttons */
+    justify-content: center;
+    margin-top: 10px; /* Pushed closer to job details */
 }
 
-/* Action buttons */
-.application-actions form {
-    display: inline-block;
-    margin-right: 10px;
-}
-
+/* Buttons */
 .application-actions button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
+    padding: 8px 16px; /* Smaller buttons */
+    font-size: 0.9rem; /* Smaller text */
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
-/* Reject button style */
+/* Reject button */
 .application-actions .btn-danger {
     background-color: #dc3545;
     color: white;
@@ -101,14 +97,17 @@ h1 {
 
 .application-actions .btn-danger:hover {
     background-color: #c82333;
+    transform: scale(1.03);
 }
 
-/* Schedule Interview button style */
+/* Schedule Interview button */
 .application-actions .btn-primary {
-    background-color: #3b9c58;
+    background-color: #007bff;
     color: white;
 }
 
 .application-actions .btn-primary:hover {
-    background-color: #3b9c58;
+    background-color: #0056b3;
+    transform: scale(1.03);
 }
+

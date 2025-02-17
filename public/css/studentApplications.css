@@ -1,8 +1,9 @@
 /* General Styling for the Applications Page */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 800px;
+    margin: 0; /* Ensure no automatic centering */
     padding: 20px;
+    display: block; /* Preventing any centering effect */
 }
 
 h1 {
@@ -14,15 +15,15 @@ h1 {
 }
 
 table {
-    width: 100%;
+    width: 140%; /* Ensures the table takes up the full width of its container */
     margin-top: 20px;
     border-collapse: collapse;
     background-color: #f9f9f9;
+    text-align: left; /* Ensures text aligns to the left */
 }
 
 table th, table td {
     padding: 12px;
-    text-align: left;
     border: 1px solid #ddd;
 }
 
@@ -84,6 +85,7 @@ table th {
     font-size: 18px;
     text-align: center;
 }
+
 .alert-success {
     background-color: #d4edda;
     color: #155724;

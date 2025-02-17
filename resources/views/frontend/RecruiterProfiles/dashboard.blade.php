@@ -16,7 +16,7 @@
     <title>Recruiter Dashboard</title>
 </head>
 <body>
-    <div class="container">
+ 
         <!-- Sidebar -->
         <nav class="sidebar">
             <div class="logo">
@@ -36,7 +36,7 @@
 
 
 
-                <li><a href="#" class="nav-item"><span>Chats</span></a></li>
+<a href="{{ route('chat.recindex') }}" class="nav-item"class="nav-item"><span>Chats</span></a></li>
                 <li><a href="{{ route('postinternships.tablecreate') }}" class="nav-item"><span>All Internships</span></a></li>
                 <li><a href="{{ route('postinternships.create') }}" class="nav-item"><span>Post Internships</span></a></li>
             </ul>
@@ -67,6 +67,9 @@
     </div>
 </div>
 <div class="main-content">
+     <div class="content">
+        @yield('content') <!-- This ensures content from profile page appears here -->
+    </div>
 @if (session('success'))
     <div class="alert alert-success">
         <p>{{ session('success') }}</p>

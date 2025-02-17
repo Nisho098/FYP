@@ -7,7 +7,7 @@ use Illuminate\support\facades\Auth;
 use Illuminate\support\str;
 use Illuminate\support\facades\hash;
 use App\Models\User;
-use App\Models\Student_profiles;
+use App\Models\Studentprofile;
 use App\Models\Recruiter_profiles;
 use App\Mail\ResetPassword;
 
@@ -75,7 +75,7 @@ class AccountController extends Controller
 
         // Set the role as 'student'
     
-        Student_profiles::create([
+        Studentprofile::create([
             'user_id' => $user->id,
             'name' => $user->name,
         ]);

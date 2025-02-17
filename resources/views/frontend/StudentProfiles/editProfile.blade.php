@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
-    <link rel="stylesheet" href="{{ asset('css/editRecruiterProfile.css') }}">
-</head>
-<body>
-    <div class="container">
+@extends('frontend.StudentProfiles.dashboard')
+
+@section('content')
+<div class="container">
         <h1>Edit Profile</h1>
-        
+        <link rel="stylesheet" href="{{ asset('css/editRecruiterProfile.css') }}">
         <form action="{{ route('studentProfile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
@@ -50,6 +44,15 @@
                 <input type="text" id="location" name="location" value="{{ old('location', optional(Auth::user()->studentProfile)->location) }}">
             </div>
 
+            <!-- Profile Picture -->
+            <div class="form-group">
+                <label for="profile_picture">Profile Picture:</label>
+                <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+                @if(optional(Auth::user()->studentProfile)->profile_picture)
+                    <img src="{{ asset('storage/profile_pictures/' . Auth::user()->studentProfile->profile_picture) }}" alt="Current Profile Picture" width="100" height="100">
+                @endif
+            </div>
+
             <!-- CV Upload -->
             <div class="form-group">
                 <label for="cv">Upload CV:</label>
@@ -63,7 +66,8 @@
             <div class="form-group">
                 <button type="submit" class="btn">Save Changes</button>
             </div>
+
         </form>
+        </div>
     </div>
-</body>
-</html>
+@endsection

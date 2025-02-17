@@ -1,3 +1,6 @@
+@extends('frontend.StudentProfiles.dashboard') <!-- Extend from dashboard layout -->
+
+@section('content')
 @csrf
 <link rel="stylesheet" href="{{ asset('css/applyForm.css') }}">
 <div class="container">
@@ -49,3 +52,4 @@
         <button type="submit" class="btn btn-primary">Submit Application</button>
     </form>
 </div>
+@endsection

@@ -173,7 +173,8 @@ body {
 
 /* table */
 box-container {
-    width: 150%;
+    width: 120%;
+    height: 100%;
     margin: 30px auto;
     padding: 20px;
     background-color: #fff;
@@ -288,10 +289,12 @@ box-container {
 }
 
 /* Main Content Section */
+/* Ensure the main content adjusts for the sidebar */
 .main-content {
     margin-left: 200px; /* Space for sidebar */
     padding: 20px;
     padding-top: 60px; /* Space for header */
+    box-sizing: border-box; /* Prevents unexpected spacing issues */
 }
 
 /* Dropdown Button and Menu */
@@ -421,4 +424,53 @@ box-container {
     .icon {
         margin-right: 10px;
     }
+    .profile-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .profile-info {
+        text-align: center;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .profile-picture {
+        position: relative;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .profile-picture img {
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        object-fit: cover;
+        border: 2px solid #ccc;
+    }
+    
+    .profile-picture input {
+        display: block;
+        margin-top: 10px;
+    }
+    
+    .job-listing-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .job-listing-table th, .job-listing-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    
+    .job-listing-table th {
+        background-color: #f2f2f2;
+    }
+    
 

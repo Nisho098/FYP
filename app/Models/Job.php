@@ -24,11 +24,15 @@ class Job extends Model
     {
         return $this->hasMany(Job::class, 'recruiter_id');
     }
-    // In Job model
-public function recruiterProfile()
-{
-    return $this->belongsTo(Recruiter_profiles::class, 'recruiter_id');
-}
+   
+    
+    public function recruiterProfile()
+    {
+        return $this->belongsTo(RecruiterProfile::class, 'recruiter_id', 'user_id');
+    }
+    
+    
+    
 public function applications()
 {
     return $this->hasMany(Application::class);

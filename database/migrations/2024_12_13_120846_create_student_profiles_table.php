@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('location')->nullable(); 
             $table->string('resume_url', 255)->nullable();
             $table->string('portfolio_url', 255)->nullable();
+            $table->string('profile_picture')->nullable(); // Profile picture column
+
             $table->timestamps(); 
 
             // Foreign key constraint

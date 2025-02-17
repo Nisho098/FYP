@@ -1,67 +1,58 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
+
+@extends('frontend.RecruiterProfiles.dashboard')
+
+@section('content')
+<div class="container mt-5">
+    <h2 class="mb-4">Edit Recruiter Profile</h2>
     <link rel="stylesheet" href="{{ asset('css/editRecruiterProfile.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h1>Edit Profile</h1>
-        <form action="{{ route('studentProfile.update') }}" method="POST" enctype="multipart/form-data">
-            @csrf
+    @if(session('success'))
+        <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
 
-        
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" value="{{ old('name', Auth::user()->name) }}" required>
-                @error('name')
-                    <div class="error">{{ $message }}</div>
-                @enderror
-            </div>
+    <form method="POST" action="{{ route('recruiterProfile.update', $recruiter->id) }}">
 
-         
-            <div class="form-group">
-                <label for="about">About Me:</label>
-                <textarea id="about" name="about" rows="5">{{ old('about', Auth::user()->studentProfile->about ?? '') }}</textarea>
-                @error('about')
-                    <div class="error">{{ $message }}</div>
-                @enderror
-            </div>
+        @csrf
+      
 
-        
-            <div class="form-group">
-                <label for="education">Education:</label>
-                <textarea id="education" name="education" rows="4">{{ old('education', Auth::user()->studentProfile->education ?? '') }}</textarea>
-                @error('education')
-                    <div class="error">{{ $message }}</div>
-                @enderror
-            </div>
 
-       
-            <div class="form-group">
-                <label for="skills">Skills:</label>
-                <input type="text" id="skills" name="skills" value="{{ old('skills', Auth::user()->studentProfile->skills ? implode(', ', explode(',', Auth::user()->studentProfile->skills)) : '') }}">
-                @error('skills')
-                    <div class="error">{{ $message }}</div>
-                @enderror
-            </div>
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" name="name" 
+       value="{{ old('name', optional(Auth::user()->recruiterProfile)->name) }}" required>
 
-       
-            <div class="form-group">
-                <label for="cv">Upload CV:</label>
-                <input type="file" id="cv" name="resume_url" accept=".pdf,.doc,.docx">
-                @if(Auth::user()->studentProfile->resume_url)
-                    <a href="{{ asset('storage/' . Auth::user()->studentProfile->resume_url) }}" target="_blank">View Current Resume</a>
-                @endif
-            </div>
+        </div>
 
-         
-            <div class="form-group">
-                <button type="submit" class="btn">Save Changes</button>
-            </div>
-        </form>
-    </div>
-</body>
-</html> -->
+        <div class="mb-3">
+            <label class="form-label">Company Website</label>
+            <input type="url" class="form-control" name="company_website" value="{{ old('company_website', optional(Auth::user()->recruiterProfile)->company_website) }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Contact Number</label>
+            <input type="text" class="form-control" name="contact_number" value="{{ old('contact_number',optional(Auth::user()->recruiterProfile)->contact_number) }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" name="address" value="{{ old('address',optional(Auth::user()->recruiterProfile)->address) }}">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Details</label>
+            <textarea class="form-control" name="details" rows="3">{{ old('details',optional(Auth::user()->recruiterProfile)->details) }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Personal Details</label>
+            <textarea class="form-control" name="personaldetails" rows="3">{{ old('personaldetails', optional(Auth::user()->recruiterProfile)->personaldetails) }}</textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">About Company</label>
+            <textarea class="form-control" name="aboutcompany" rows="3">{{ old('aboutcompany', optional(Auth::user()->recruiterProfile)->aboutcompany) }}</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>
+@endsection

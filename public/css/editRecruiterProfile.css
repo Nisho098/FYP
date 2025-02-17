@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -11,8 +11,14 @@ body {
     color: #333;
 }
 
+/* Main Content */
+.main-content {
+    padding: 20px;
+}
+
+/* FORM STYLES (Ensuring it works inside the dashboard layout) */
 .container {
-    max-width: 600px;
+    max-width: 750px;
     margin: 50px auto;
     padding: 20px;
     background: #fff;
@@ -74,4 +80,36 @@ input:focus, textarea:focus {
 
 .btn:hover {
     background: #5e9e44;
+}
+
+/* Profile Section */
+.profile-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 600px;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #4caf50;
+}
+
+/* Button Alignment */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin: 20px auto;
+    }
 }
